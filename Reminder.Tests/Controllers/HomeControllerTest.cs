@@ -19,10 +19,10 @@ namespace Web.Tests.Controllers
 			HomeController controller = new HomeController();
 
 			// Act
-			ViewResult result = controller.Index() as ViewResult;
+			ViewResult result = controller.Index("Test message") as ViewResult;
 
 			// Assert
-			Assert.AreEqual("Modify this template to jump-start your ASP.NET MVC application.", result.ViewBag.Message);
+			Assert.AreEqual("Test message", result.ViewBag.ResultMessage);
 		}
 
 		[TestMethod]
