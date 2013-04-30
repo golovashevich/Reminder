@@ -1,0 +1,9 @@
+@{
+    Response.ContentType = "text/xml";
+
+    var twiml = new Twilio.TwiML.TwilioResponse();
+
+    twiml.Say(string.Format("A customer at the number {0} is calling", Request["number"]));
+    twiml.Dial(Request["number"]);
+}
+@Html.Raw(twiml.ToString())

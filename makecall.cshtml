@@ -1,0 +1,30 @@
+@{
+ 
+    /* Set our AccountSid and AuthToken */
+    string AccountSid = "AXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+    string AuthToken = "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY";
+
+
+    /* Outgoing Caller ID you have previously validated with Twilio */
+    string from = "NNNNNNNNNN";
+ 
+    /* Number you wish to call */
+    string to= "MMMMMMMMMM";
+ 
+    /* Directory location for callback.php file (for use in REST URL)*/
+    Uri cleanedUri = new Uri(Request.Url.GetComponents(UriComponents.AbsoluteUri & ~UriComponents.Port, UriFormat.UriEscaped));
+    string baseUri = cleanedUri.AbsoluteUri.Remove(cleanedUri.AbsoluteUri.Length - cleanedUri.Segments.Last().Length);
+ 
+    /* Instantiate a new Twilio Rest Client */
+    var client = new Twilio.TwilioRestClient(AccountSid, AuthToken);
+ 
+    if (Request["called"]==null) {
+        Response.Redirect("index.cshtml?msg=Must specify your phone number",true);    
+    }
+ 
+    /* make Twilio REST request to initiate outgoing call */
+    var call = client.InitiateOutboundCall(from, to, string.Format("{0}callback.cshtml?number={1}", baseUri, Request["called"]));
+ 
+    /* redirect back to the main page with CallSid */
+    Response.Redirect(string.Format("index.cshtml?msg=Connecting... {0}", call.Sid),true);
+}
