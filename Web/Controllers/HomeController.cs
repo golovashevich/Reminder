@@ -32,6 +32,7 @@ namespace Web.Controllers
 		[HttpPost]
 		public ActionResult Try(PhoneModel model)
 		{
+			Debug.WriteLine("Try method");
 			string accountSid = "AC77d12b79ec308151eb23371ce27c0202";
 			string authToken = "ecf3f79e6f5adaeab7ef2efe6abadd8e";
 
