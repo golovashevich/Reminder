@@ -16,9 +16,11 @@
 <h3>Fix No Shows and Cancellation Increase Revenue!!</h3>
 @using (Html.BeginForm("Try", "Home", FormMethod.Post)) {
 
-@: Phone: @Html.TextBoxFor(m => m.Phone)<br />
+@: Phone: @Html.TextBoxFor(m => m.Phone)
+@Html.ValidationMessageFor(m => m.Phone)
+<br />
 @: Text to Speech: @Html.TextBoxFor(m => m.Text)
-@: <button type="submit">Try Now!!!</button>
+@: <button type="submit">Try Now!!</button>
 }
 
 @if (!String.IsNullOrEmpty(ViewBag.ResultMessage))
