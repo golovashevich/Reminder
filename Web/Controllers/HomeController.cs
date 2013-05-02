@@ -42,7 +42,7 @@ namespace Web.Controllers
 					Request.Url.Scheme);
 
 			twilio.SendSmsMessage(VERIFIED_NUMBER, "+380631205443", 
-					String.Format("Try: {0}, {1}, {2}", model.Phone, model.Text, options.Url);
+					String.Format("Try: {0}, {1}, {2}", model.Phone, model.Text, options.Url));
 
 			TwilioBase result = twilio.InitiateOutboundCall(options);
 
