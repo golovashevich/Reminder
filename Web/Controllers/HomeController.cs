@@ -62,8 +62,11 @@ namespace Web.Controllers
 			string tts = Convert.ToString(Request["tts"]);
 			tts = Server.UrlDecode(tts);
 
+			#region Diagnostics
 			new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN).
-					SendSmsMessage(VERIFIED_NUMBER, "+380631205443", "Callback: " + tts);
+					SendSmsMessage(VERIFIED_NUMBER, "+380631205443", 
+					String.Format("Callback: {0}, {1}" + tts, Request.RawUrl));
+			#endregion
 
 			var twilioResponse = new TwilioResponse();
 			twilioResponse.Say(tts);
