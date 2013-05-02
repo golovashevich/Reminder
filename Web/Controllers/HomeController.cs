@@ -41,7 +41,8 @@ namespace Web.Controllers
 					new { tts = Server.UrlEncode(model.Text) }, 
 					Request.Url.Scheme);
 
-			twilio.SendSmsMessage(VERIFIED_NUMBER, "+380631205443", "Try: " + model.Text);
+			twilio.SendSmsMessage(VERIFIED_NUMBER, "+380631205443", 
+					String.Format("Try: {0}, {1}, {2}", model.Phone, model.Text, options.Url);
 
 			TwilioBase result = twilio.InitiateOutboundCall(options);
 
