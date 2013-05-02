@@ -6,6 +6,8 @@ namespace Web.Models
 	{
 		[Required]
 		public string Phone { get; set; }
+
+		[Required]
 		public string Text { get; set; }
 	}
 }

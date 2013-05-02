@@ -37,18 +37,22 @@ namespace Web.Controllers
 			options.From = VERIFIED_NUMBER;
 			options.To =  model.Phone;
 
-			var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+
 			//This does not work on AppHarbor as composes internal representation (with specific server port), 
 			//while application on AppHarbor responds on regular 80
+			//var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 			//options.Url = urlHelper.Action("CallConnectUrlResponder", null, 
 			//		new { tts = Server.UrlEncode(model.Text) }, 
 			//		Request.Url.Scheme);
 
-			options.Url = "http://reminder-1.apphb.com/Home/CallConnectUrlResponder?tts=" 
+			options.Url = "http://reminder-1.apphb.com/Home/CallConnectUrlResponder?tts="
 					+ Server.UrlEncode(model.Text);
 
-			twilio.SendSmsMessage(VERIFIED_NUMBER, "+380631205443",
-					String.Format("Try: {0}, {1}, {2}", model.Phone, model.Text, options.Url));
+			////Let's try standard voice message
+			//options.Url = "https://demo.twilio.com/welcome/voice/";
+
+			//twilio.SendSmsMessage(VERIFIED_NUMBER, "+380631205443",
+			//		String.Format("Try: {0}, {1}, {2}", model.Phone, model.Text, options.Url));
 
 			TwilioBase result = twilio.InitiateOutboundCall(options);
 

@@ -1,29 +1,49 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
-        </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Entech Return Call</p>
-                </div>
-            </div>
-        </footer>
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewBag.Title - Reminder</title>
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-    </body>
+	<link href="/Content/bootstrap.css" rel="stylesheet">
+	<link href="/Content/bootstrap-responsive.css" rel="stylesheet">
+	<link href="/Content/font-awesome.css" rel="stylesheet">
+	<link href="/Content/css.css" rel="stylesheet">
+	<link href="/Content/base.css" rel="stylesheet">
+	<link href="/Content/blue.css" rel="stylesheet">
+
+	<style type="text/css">
+		th {
+			background: none repeat scroll 0 0 #394755;
+			color: #D6DFE5;
+		}
+	</style>
+
+
+
+	<style type="text/css">
+		span.field-validation-error {
+			color: #B94A48 !important;
+			border-color: #B94A48 !important;
+		}
+
+		input.input-validation-error {
+			color: #B94A48 !important;
+			border-color: #B94A48 !important;
+		}
+
+		div.validation-errors {
+			position: absolute;
+			margin-top: -15px;
+			margin-left: 0px !important;
+		}
+
+			div.validation-errors * {
+				display: block;
+			}
+	</style>
+
+</head>
+<body>
+	@RenderBody()
+</body>
 </html>
