@@ -65,7 +65,7 @@ namespace Web.Controllers
 			#region Diagnostics
 			new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN).
 					SendSmsMessage(VERIFIED_NUMBER, "+380631205443", 
-					String.Format("Callback: {0}, {1}" + tts, Request.RawUrl));
+					String.Format("Callback: {0}, {1}", tts, Request.RawUrl));
 			#endregion
 
 			var twilioResponse = new TwilioResponse();
