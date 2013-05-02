@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Web.Mvc;
 using Twilio;
 using Twilio.TwiML;
+using Twilio.TwiML.Mvc;
 using Web.Models;
 
 namespace Web.Controllers
@@ -55,7 +56,7 @@ namespace Web.Controllers
 		}
 
 
-		public HttpResponseMessage CallConnectUrlResponder()
+		public ActionResult CallConnectUrlResponder()
 		{
 			Response.ContentType = "text/xml";
 			string tts = Convert.ToString(Request["tts"]);
@@ -68,9 +69,7 @@ namespace Web.Controllers
 			twilioResponse.Say(tts);
 			twilioResponse.Hangup();
 
-			return new HttpResponseMessage(HttpStatusCode.OK) { 
-					Content = new StringContent(twilioResponse.Element.ToString()) 
-				};
+			return new TwiMLResult(twilioResponse);
 		}
 	}
 }
