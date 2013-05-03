@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Resources;
+using System;
 using System.Web.Mvc;
 using Twilio;
 using Twilio.TwiML;
@@ -12,6 +13,7 @@ namespace Web.Controllers
 		const string ACCOUNT_SID = "ACf351d8cc47408a1379f4fac824a76d8b";
 		const string AUTH_TOKEN = "8fbca9931950d9c055e29e55f5a7f089";
 		const string VERIFIED_NUMBER = "+1 951-200-5443";
+		const string PARAM_TTS = "tts";
 
 		public ActionResult Index(string resultMessage)
 		{
@@ -43,14 +45,8 @@ namespace Web.Controllers
 			//		new { tts = Server.UrlEncode(model.Text) }, 
 			//		Request.Url.Scheme);
 
-			options.Url = "http://reminder-1.apphb.com/Home/CallConnectUrlResponder?tts="
-					+ Server.UrlEncode(model.Text);
-
-			////Let's try standard voice message
-			//options.Url = "https://demo.twilio.com/welcome/voice/";
-
-			//twilio.SendSmsMessage(VERIFIED_NUMBER, "+380631205443",
-			//		String.Format("Try: {0}, {1}, {2}", model.Phone, model.Text, options.Url));
+			options.Url = String.Format("http://reminder-1.apphb.com/Home/CallConnectUrlResponder?{0}={1}",
+					PARAM_TTS, Server.UrlEncode(model.Text));
 
 			TwilioBase result = twilio.InitiateOutboundCall(options);
 
@@ -59,14 +55,14 @@ namespace Web.Controllers
 				return RedirectToAction("Index", new { resultMessage = result.RestException.Message });
 			}
 
-			return RedirectToAction("Index", new { resultMessage = "Success!" });
+			return RedirectToAction("Index", new { resultMessage = Home.IndexSuccess });
 		}
 
 
 		public ActionResult CallConnectUrlResponder()
 		{
 			Response.ContentType = "text/xml";
-			string tts = Convert.ToString(Request["tts"]);
+			string tts = Convert.ToString(Request[PARAM_TTS]);
 			tts = Server.UrlDecode(tts);
 
 			#region Diagnostics

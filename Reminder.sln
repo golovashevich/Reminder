@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reminder.Tests", "Reminder.Tests\Reminder.Tests.csproj", "{35A78B8F-4ED6-4505-A702-3D3EF1261F3B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{2C589E85-CF42-4ECE-8EA6-B243F03FCC6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{35A78B8F-4ED6-4505-A702-3D3EF1261F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35A78B8F-4ED6-4505-A702-3D3EF1261F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35A78B8F-4ED6-4505-A702-3D3EF1261F3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C589E85-CF42-4ECE-8EA6-B243F03FCC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C589E85-CF42-4ECE-8EA6-B243F03FCC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C589E85-CF42-4ECE-8EA6-B243F03FCC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C589E85-CF42-4ECE-8EA6-B243F03FCC6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

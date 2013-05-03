@@ -1,6 +1,7 @@
 ﻿@model Web.Models.PhoneModel
+@using Resources	
 @{
-	ViewBag.Title = "Return Call";
+	ViewBag.Title = Home.IndexTitle;
 }
 
 @section Scripts {
@@ -10,7 +11,7 @@
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			@Html.ActionLink("RETURN CALL", "Index", "Home", new { @class = "brand" })
+			@Html.ActionLink(Home.IndexHeader, "Index", "Home", new { @class = "brand" })
 		</div>
 	</div>
 </div>
@@ -19,7 +20,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="span5">
-				<h1>Fix No Shows and Cancellation Increase Revenue!!</h1>
+				<h1>@Home.IndexFixNoShows</h1>
 				<p>
 					@using (Html.BeginForm("Try", "Home", FormMethod.Post)) {
 
@@ -28,7 +29,7 @@
 						<br />
 						@Html.TextBoxFor(m => m.Text)
 						@Html.ValidationMessageFor(m => m.Text)
-						@: <button type="submit" class="btn btn-primary btn-action">Try Now!!</button>
+						@: <button type="submit" class="btn btn-primary btn-action">@Home.IndexTry</button>
 					}
 				</p>
 				@if (!String.IsNullOrEmpty(ViewBag.ResultMessage)) {
