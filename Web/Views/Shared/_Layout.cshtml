@@ -3,20 +3,9 @@
 <head>
 	<meta charset="utf-8" />
 	<title>@ViewBag.Title</title>
-
-	<link href="/Content/bootstrap.css" rel="stylesheet">
-	<link href="/Content/bootstrap-responsive.css" rel="stylesheet">
-	<link href="/Content/font-awesome.css" rel="stylesheet">
-	<link href="/Content/css.css" rel="stylesheet">
-	<link href="/Content/base.css" rel="stylesheet">
-	<link href="/Content/blue.css" rel="stylesheet">
-	
-	<style type="text/css">
-		th {
-			background: none repeat scroll 0 0 #394755;
-			color: #D6DFE5;
-		}
-	</style>
+	@Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
+	@RenderSection("scripts", required: false)
 
 	<style type="text/css">
 		span.field-validation-error {
