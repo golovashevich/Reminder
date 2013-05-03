@@ -1,30 +1,13 @@
 ﻿@model Web.Models.PhoneModel
 @{
-    ViewBag.Title = "Return Call";
+	ViewBag.Title = "Return Call";
 }
-
-@*<h3>Fix No Shows and Cancellation Increase Revenue!!</h3>
-@using (Html.BeginForm("Try", "Home", FormMethod.Post)) {
-
-@: Phone: @Html.TextBoxFor(m => m.Phone)
-@Html.ValidationMessageFor(m => m.Phone)
-<br />
-@: Text to Speech: @Html.TextBoxFor(m => m.Text)
-@: <button type="submit">Try Now!!</button>
-}
-
-@if (!String.IsNullOrEmpty(ViewBag.ResultMessage))
-{
-	@: <h2>@ViewBag.ResultMessage</h2>
-}*@
 
 
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<a class="btn btn-primary btn-dropnav" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-				@Html.ActionLink("RETURN CALL", "Index", "Home", new { @class = "brand" })
+			@Html.ActionLink("RETURN CALL", "Index", "Home", new { @class = "brand" })
 		</div>
 	</div>
 </div>
@@ -38,18 +21,17 @@
 				<p>
 					@using (Html.BeginForm("Try", "Home", FormMethod.Post)) {
 
-@: Phone: @Html.TextBoxFor(m => m.Phone)
-@Html.ValidationMessageFor(m => m.Phone)
-<br />
-@Html.TextBoxFor(m => m.Text)
-@Html.ValidationMessageFor(m => m.Text)
-@: <button type="submit" class="btn btn-primary btn-action">Try Now!!</button>
-}
+						@: Phone: @Html.TextBoxFor(m => m.Phone)
+						@Html.ValidationMessageFor(m => m.Phone)
+						<br />
+						@Html.TextBoxFor(m => m.Text)
+						@Html.ValidationMessageFor(m => m.Text)
+						@: <button type="submit" class="btn btn-primary btn-action">Try Now!!</button>
+					}
 				</p>
-@if (!String.IsNullOrEmpty(ViewBag.ResultMessage))
-{
-	@: <h2>@ViewBag.ResultMessage</h2>
-}
+				@if (!String.IsNullOrEmpty(ViewBag.ResultMessage)) {
+					@: <h2>@ViewBag.ResultMessage</h2>
+				}
 
 			</div>
 			<div class="span7">
